@@ -1,0 +1,9 @@
+/.vs
+/.vscode
+
+/InputLib
+/x64
+
+InputLib.vcxproj.user
+
+Client.cpp
