@@ -33,7 +33,7 @@ As the library is designed to handle different types of string, here are two dif
 
 1. Printer implementation :
 
-<code>
+```
 class Printer : public IL::Printer<char, std::string>
 {
 	void Print(char c) const override
@@ -51,11 +51,11 @@ class Printer : public IL::Printer<char, std::string>
 		std::cout << '\n';
 	}
 };
-</code>
+```
 
 2. Handling inputs :
 
-<code>
+```
 Printer printer;
 
 std::string name;
@@ -67,13 +67,13 @@ scanner.LineInput("What is your name ?", name, []([[maybe_unused]] const std::st
 scanner.Input<int>("How old are you ?", age, [](int ageInput) { return ageInput >= 0 && ageInput < 150; }, "Age should be positive and under 150.");
 
 std::cout << "Hey " << name << ", you are " << age << " years old !" << std::endl;
-</code>
+```
 
 ### Wide strings
 
 1. Printer implementation :
 
-<code>
+```
 class FrenchPrinter : public IL::Printer<wchar_t, std::wstring>
 {
 	void Print(wchar_t c) const override
@@ -91,18 +91,18 @@ class FrenchPrinter : public IL::Printer<wchar_t, std::wstring>
 		std::wcout << L'\n';
 	}
 };
-</code>
+```
 
 2. Setting up console for UTF-16 (which includes UTF-8) :
 
-<code>
+```
 _setmode(_fileno(stdin), _O_U16TEXT);
 _setmode(_fileno(stdout), _O_U16TEXT);
-</code>
+```
 
 3. Handling inputs :
 
-<code>
+```
 FrenchPrinter frenchPrinter;
 
 std::wstring frenchName;
@@ -114,4 +114,4 @@ frenchScanner.LineInput(L"Quel est ton nom ?", frenchName, []([[maybe_unused]] c
 frenchScanner.Input<int>(L"Quel âge as-tu ?", frenchAge, [](int ageInput) { return ageInput >= 0 && ageInput < 150; }, L"L'âge doit être compris entre 0 et 150.");
 
 std::wcout << L"Salut " << frenchName << L", tu as " << frenchAge << L" ans !" << std::endl;
-</code>
+```
